@@ -27,7 +27,7 @@ const viewRouter = require("./routes/viewRoutes");
 const app = express();
 
 // render flags validation error for: 'X-Forwarded-For'
-app.set('trust proxy', true);
+app.set('trust proxy', 1);
 
 // 12 video 176
 app.set("view engine", "pug");
