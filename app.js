@@ -22,7 +22,7 @@ const reviewRouter = require("./routes/reviewRoutes");
 const bookingRouter = require("./routes/bookingRoutes");
 const viewRouter = require("./routes/viewRoutes");
 
-// Start express application
+// Start Express Application
 const app = express();
 
 // 12 video 176
