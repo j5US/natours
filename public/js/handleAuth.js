@@ -16,7 +16,7 @@ export const handleAuthAction = async (data, type) => {
 
     // Ensure the type is either "signup" or "login"
     if (type !== "signup" && type !== "login") {
-        console.error("Invalid authentication type. at handleAuthAction()");
+        console.error("Invalid authentication type: at handleAuthAction()");
         return;
     }
 
@@ -41,7 +41,7 @@ export const handleAuthAction = async (data, type) => {
         // console.log(res);
     } catch (err) {
         // Handle and display errors
-        const errorMessage = err.response?.data?.message || "An error occurred. Please try again.";
+        const errorMessage = err.response?.data?.message || "An error occurred, Please try again!";
         showAlert("error", errorMessage);
     }
 };
