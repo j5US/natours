@@ -1,7 +1,7 @@
 /* eslint-disable-next-line */
 const Razorpay = require('razorpay');
 const crypto = require("crypto");
-const { promisify } = require("util");
+// const { promisify } = require("util");
 const Tour = require("../models/tourModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require('../utils/appError');
@@ -21,7 +21,8 @@ exports.getCheckoutSession = catchAsync(async (req, res, next) => {
 
     // 2) Create the checkout session
     // Promisifying the create method on razorpayInstance
-    const createOrder = promisify(razorpayInstance.orders.create.bind(razorpayInstance));
+    // const createOrder = promisify(razorpayInstance.orders.create.bind(razorpayInstance));
+    const createOrder = razorpayInstance.orders.create.bind(razorpayInstance);
 
     const session = await createOrder({
         amount: tour.price * 100,
@@ -80,6 +81,7 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
         user: req.user._id,
         price,
     });
+    console.log(`${req.protocol}://${req.get('host')}/`);
     res.redirect(`${req.protocol}://${req.get('host')}/`);
 });
 
