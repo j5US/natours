@@ -1,0 +1,5 @@
+From from root directory - ./starter
+To import JSON to mongoDB
+node .\dev-data\data\import-dev-data.js --import
+To delete all documents from mongoDB
+node .\dev-data\data\import-dev-data.js --delete
