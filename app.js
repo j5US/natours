@@ -8,8 +8,9 @@ const helmet = require("helmet");
 const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
-// /* eslint-disable-next-line*/
 const cookieParser = require("cookie-parser");
+/* eslint-disable-next-line*/
+const compression = require("compression");
 
 // 09 video 115
 const AppError = require("./utils/appError");
@@ -106,6 +107,8 @@ app.use(hpp({
         "price",
     ],
 }));
+
+app.use(compression());
 
 // Test Middleware
 app.use((req, res, next) => {

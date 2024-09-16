@@ -67,7 +67,7 @@ exports.createBookingCheckout = catchAsync(async (req, res, next) => {
 
     // REMOVE || CONDITION FROM BELOW 
     if (razorpay_signature !== generated_signature) {
-        console.log("payment failure!");
+        // console.log("payment failure!");
         // return next( new AppError("Something went wrong with the transaction!", 404));
         return res.redirect(`${req.protocol}://${req.get('host')}/?error=${encodeURIComponent('Transaction failed. Please try again!.')}`);
     }

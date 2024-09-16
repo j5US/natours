@@ -1,11 +1,11 @@
 /* eslint-disable */
 import "@babel/polyfill";
-import { login, logout } from "./login";
+// import { login, logout } from "./login";
 import { displayMap } from "./leaflet";
 import { updateSettings } from "./updateSettings";
 import { bookTour } from "./razorPay";
 import { showAlert } from "./alerts";
-import { handleAuthAction } from "./handleAuth";
+import { handleAuthAction, logout } from "./handleAuth";
 
 // 
 const getQueryParam = function (name) {

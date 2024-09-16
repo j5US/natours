@@ -3,7 +3,9 @@ import axios from "axios";
 import { showAlert } from "./alerts"
 
 // Define constants for API endpoints
-const API_BASE_URL = "http://localhost:3000/api/v1/users";
+// const API_BASE_URL = "http://localhost:3000/api/v1/users";
+// used without localhost because API and frontend hosted on same server
+const API_BASE_URL = "/api/v1/users";
 const SUCCESS_MESSAGES = {
     signup: "Signed up successfully!",
     login: "Logged in successfully!",
@@ -44,56 +46,17 @@ export const handleAuthAction = async (data, type) => {
     }
 };
 
+export const logout = async () => {
+    try {
+        const res = await axios({
+            method: "GET",
+            // url: "http://localhost:3000/api/v1/users/logout",
+            // no need localhost: frontend and api hosted on same server
+            url: "/api/v1/users/logout",
+        });
+        if (res.data.status === "success") location.reload(true);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// /* eslint-disable */
-// import axios from "axios";
-// import { showAlert } from "./alerts"
-
-// // type is either "signup" or "login"
-// export const handleAuthAction = async (data, type) => {
-//     try {
-//         const url = type === "signup"
-//             ? "http://localhost:3000/api/v1/users/signup"
-//             : "http://localhost:3000/api/v1/users/login";
-        
-//         if (type === "signup") showAlert("warn", "Your request is being processed!");
-        
-//         const res = await axios({
-//             method: "POST",
-//             url,
-//             data,
-//         });
-
-
-//         if (res.data.status === "success") {
-//             if(type === "signup") showAlert("success", "Signed up successfully!");
-//             else showAlert("success", "Logged in successfully!");
-//             window.setTimeout(() => {
-//                 location.assign("/");
-//             }, 1000);
-//         }
-
-//         // console.log(res);
-//     } catch (err) {
-//         showAlert("error", err.response.data.message);
-//     }
-// };
-
-
+    } catch (err) {
+        showAlert("error", err.response.data.message);
+    }
+};
