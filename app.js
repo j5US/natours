@@ -120,8 +120,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get('/ip', (request, response) => response.send(request.ip));
-
 // Routes
 app.use("/", viewRouter);
 
