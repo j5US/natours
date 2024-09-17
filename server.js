@@ -49,3 +49,12 @@ process.on("unhandledRejection", (err) => {
     process.exit(1);
   });
 });
+
+// related to hosting service: RENDER
+process.on('SIGTERM', () => {
+  console.log('👋 SIGTERM signal received: Shutting down gracefully');
+  // Close your server and other resources here
+  server.close(() => {
+    console.log('💥 Process terminated!');
+  });
+});
