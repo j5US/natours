@@ -19,11 +19,13 @@ const createSendToken = (user, statusCode, req, res) => {
         httpOnly: true,
     };
 
+    // test for https and set cookie option to secure
+    // relevant for hosting services
     if (req.secure || req.headers['x-forwarded-proto'] === 'https') {
-        console.log(req.secure, req.headers['x-forwarded-proto'], "from createSendToken");
+        cookieOptions.secure = true;
     }
 
-    if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+    // if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
 
     res.cookie("jwt", token, cookieOptions);
 
