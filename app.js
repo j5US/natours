@@ -9,8 +9,9 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
-/* eslint-disable-next-line*/
 const compression = require("compression");
+/* eslint-disable-next-line*/
+const cors = require("cors");
 
 // 09 video 115
 const AppError = require("./utils/appError");
@@ -37,6 +38,12 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.static(path.join(__dirname, "public")));
 
 // Global Middleware
+// Implement CORS
+app.use(cors());
+// Access-Control-Allow-Origin *
+
+app.options("*", cors());
+
 // Further HELMET configuration for Security Policy (CSP)
 const scriptSrcUrls = [
     'https://unpkg.com/',
