@@ -7,18 +7,19 @@ import { bookTour } from "./razorPay";
 import { showAlert } from "./alerts";
 import { handleAuthAction, logout } from "./handleAuth";
 
-// 
-const getQueryParam = function (name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
+// ALERT MESSAGE: for razorpay withour webhook
+// const getQueryParam = function (name) {
+//     const urlParams = new URLSearchParams(window.location.search);
+//     return urlParams.get(name);
+// }
 
-window.onload = () => {
-    const errorMessage = getQueryParam('error');
-    if (errorMessage) {
-        showAlert("error", decodeURIComponent(errorMessage));
-    }
-}
+// window.onload = () => {
+//     const errorMessage = getQueryParam('error');
+//     if (errorMessage) {
+//         showAlert("error", decodeURIComponent(errorMessage));
+//     }
+// }
+
 
 // DOM ELEMENTS
 const leaflet = document.getElementById('map');
@@ -117,3 +118,6 @@ if (bookBtn) {
         razorpayObject.open();
     });
 }
+
+const alertMessage = document.querySelector("body").dataset.alert;
+if(alertMessage) showAlert("success", alertMessage);

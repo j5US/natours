@@ -4,7 +4,7 @@ const authController = require("../controllers/authController");
 
 const router = express.Router();
 
-router.use(authController.isLoggedIn);
+router.use(viewsController.alerts);
 
 // 12 video 176
 router.get("/", authController.isLoggedIn, viewsController.getOverview);

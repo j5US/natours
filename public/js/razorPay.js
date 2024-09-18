@@ -10,7 +10,11 @@ const razorPayOptions = ( order_id, order_info, price, receipt) => {
         image: "https://www.natours.dev/img/favicon.png",
         order_id,
         // callback_url: `http://localhost:3000/api/v1/bookings/booking-checkout/${receipt},${price}`,
-        callback_url: `/api/v1/bookings/booking-checkout/${receipt},${price}`,
+        // callback_url: `/api/v1/bookings/booking-checkout/${receipt},${price}`,
+        // callback_url: `/?alert=booking`,
+        handler: function(res) {
+            location.assign("/?alert=booking");
+        },
         prefill: { 
             name: order_info.customer_name, 
             email: order_info.customer_email,

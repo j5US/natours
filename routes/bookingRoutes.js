@@ -9,7 +9,8 @@ router.use(authController.protect);
 router.route("/checkout-session/:tourId").get(bookingController.getCheckoutSession);
 
 // Validate the checkout session and adds booking to db
-router.route("/booking-checkout/:tour").post(bookingController.createBookingCheckout);
+// implementation for razorpay without webhooks
+// router.route("/booking-checkout/:tour").post(bookingController.createBookingCheckout);
 
 router.use(authController.restrictTo("admin", "lead-guide"));
 
